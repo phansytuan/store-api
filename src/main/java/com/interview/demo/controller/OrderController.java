@@ -25,7 +25,7 @@ import java.util.Map;
  * OrderController
  *
  * PathParam: /orders/{orderId}          → xác định đơn hàng cụ thể
- * QueryParam: ?status=PENDING&page=0    → filter + pagination
+ * QueryParam: ?status=PENDING &page=0   → filter + pagination
  */
 @Tag(name = "Orders", description = "Order management (requires authentication)")
 @SecurityRequirement(name = "bearerAuth")
@@ -51,7 +51,7 @@ public class OrderController {
     }
 
     /**
-     * GET /orders?status=PENDING&page=0&size=10
+     * GET /orders ?status=PENDING &page=0 &size=10
      *
      * QueryParam: status (optional filter), page/size (pagination)
      */

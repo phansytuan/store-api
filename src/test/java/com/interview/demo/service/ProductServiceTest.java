@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
@@ -118,8 +117,6 @@ class ProductServiceTest {
     void spyDemo_overrideOneMethod() {
         // Tạo Spy từ object thật
         ProductService spyService = spy(new ProductService(productRepository));
-
-        when(productRepository.findAll()).thenReturn(buildTestProducts());
 
         // Override chỉ getAllCategories – trả về cố định
         doReturn(List.of("FIXED_CATEGORY")).when(spyService).getAllCategories();

@@ -21,7 +21,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @SpringBootTest: load full Spring context
  * @AutoConfigureMockMvc: tạo MockMvc để test HTTP layer
  *
- * Khác với Unit Test: không mock, test end-to-end với H2 DB thật
+ * Khác với Unit Test: không mock, test end-to-end với PostgreSQL DB thật (docker-compose)
+ * 
+ * NOTE: Testcontainers is not used because Testcontainers 1.21.3 bundles a shaded
+ * docker-java (API v1.32) incompatible with Docker 29.x (minimum API 1.40).
+ * The test relies on the running docker-compose postgres (localhost:5432/storedb).
  */
 @SpringBootTest
 @AutoConfigureMockMvc

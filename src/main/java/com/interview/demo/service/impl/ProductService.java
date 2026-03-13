@@ -7,7 +7,6 @@ import com.interview.demo.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +49,7 @@ public class ProductService {
     public List<String> getAllCategories() {
         return productRepository.findAll().stream()
                 // Intermediate operations (lazy – chưa thực thi)
-                .map(Product::getCategory)          // transform Product → String
+                .map(Product::getCategory)           // transform Product → String
                 .filter(Objects::nonNull)            // loại null
                 .distinct()                          // loại trùng
                 .sorted()                            // sắp xếp A-Z
@@ -79,9 +78,9 @@ public class ProductService {
         return productRepository.findAll().stream()
                 .filter(p -> p.getStock() > 0)                                    // Intermediate
                 .sorted(Comparator.comparing(Product::getPrice))                  // Intermediate
-                .limit(limit)                                                      // Intermediate
-                .map(this::toResponse)                                             // Intermediate
-                .collect(Collectors.toList());                                     // Terminal
+                .limit(limit)                                                     // Intermediate
+                .map(this::toResponse)                                            // Intermediate
+                .collect(Collectors.toList());                                    // Terminal
     }
 
     /**

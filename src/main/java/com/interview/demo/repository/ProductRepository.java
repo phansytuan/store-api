@@ -15,8 +15,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findByCategoryIgnoreCase(String category, Pageable pageable);
 
     @Query("SELECT p FROM Product p WHERE " +
-           "(:keyword IS NULL OR LOWER(p.name) LIKE LOWER(CONCAT('%', :keyword, '%'))) AND " +
-           "(:category IS NULL OR LOWER(p.category) = LOWER(:category))")
+           "(cast(:keyword as String) IS NULL OR LOWER(p.name) LIKE LOWER(CONCAT('%', cast(:keyword as String), '%'))) AND " +
+           "(cast(:category as String) IS NULL OR LOWER(p.category) = LOWER(cast(:category as String)))")
     Page<Product> search(@Param("keyword") String keyword,
                          @Param("category") String category,
                          Pageable pageable);

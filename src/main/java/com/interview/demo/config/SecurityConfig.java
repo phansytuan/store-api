@@ -79,7 +79,7 @@ public class SecurityConfig {
     }
 }
 
-/** 🔄 Luồng hoạt động tổng thể
+/** 🔄 Luồng hoạt động
 
     HTTP Request
         ↓
